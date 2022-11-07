@@ -1,8 +1,10 @@
 import { Navbar } from "flowbite-react";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../Contexts/AuthProvider";
+import { FaSignOutAlt } from "react-icons/fa";
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
   return (
     <Navbar className="mb-10 pt-5" fluid={true} rounded={true}>
       <Navbar.Brand href="/">
@@ -15,7 +17,16 @@ const Header = () => {
       <Navbar.Collapse>
         <Link to="/">HOME</Link>
         <Link to="/services">SERVICES</Link>
-        <Link to='/login'>LOGIN</Link>
+        {user?.uid ? (
+          <button
+            onClick={() => logOut().then((r) => {})}
+            className="flex text-red-500 font-bold items-center"
+          >
+            LOGOUT <FaSignOutAlt className="mx-2"></FaSignOutAlt>
+          </button>
+        ) : (
+          <Link to="/login">LOGIN</Link>
+        )}
       </Navbar.Collapse>
     </Navbar>
   );
