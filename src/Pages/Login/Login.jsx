@@ -1,19 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 const Login = () => {
   const navigate = useNavigate();
-  const { loginWithPass } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const { loginWithPass, googleLogin } = useContext(AuthContext);
+  const googleSignIn = () => {
+    googleLogin()
+      .then((d) => {
+        navigate(from);
+        setError("");
+      })
+      .catch((er) => setError(er.message));
+  };
   const login = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     loginWithPass(email, password)
       .then((d) => {
-        navigate("/");
+        navigate(from);
+        setError("");
       })
-      .catch((er) => console.error(er));
+      .catch((er) => setError(er.message));
 
     e.target.reset();
   };
@@ -54,6 +66,11 @@ const Login = () => {
           required
         />
       </div>
+      {error && (
+        <p className="p-1 border border-red-500 text-sm w-fit rounded-md text-red-500">
+          {error}
+        </p>
+      )}
       <p className="text-gray-400 my-3">
         New to this site ?{" "}
         <Link
@@ -73,7 +90,10 @@ const Login = () => {
       <h3 className="text-xl text-center text-gray-400 mt-3">
         Or Continue With
       </h3>
-      <button className="w-full shadow-lg hover:scale-105 duration-300 border text-lg mt-3 border-blue-500 py-2 flex items-center justify-center  rounded-lg font-bold">
+      <button
+        onClick={googleSignIn}
+        className="w-full shadow-lg hover:scale-105 duration-300 border text-lg mt-3 border-blue-500 py-2 flex items-center justify-center  rounded-lg font-bold"
+      >
         <FaGoogle className="mx-2 text-blue-700"></FaGoogle> Google
       </button>
     </form>

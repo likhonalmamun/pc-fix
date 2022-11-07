@@ -1,12 +1,21 @@
 import { updateProfile } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { registerWithPass } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const { registerWithPass, googleLogin } = useContext(AuthContext);
+  const googleSignIn = () => {
+    googleLogin()
+      .then((d) => {
+        navigate("/");
+        setError("");
+      })
+      .catch((er) => setError(er.message));
+  };
   const register = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -15,13 +24,13 @@ const Register = () => {
     const photo = e.target.photo.value;
     registerWithPass(email, password)
       .then((d) => {
-        updateProfile(d.user, { displayName: name, photoURL: photo }).then(
-          (v) => {}
-        );
-        console.log(d.user);
+        updateProfile(d.user, { displayName: name, photoURL: photo })
+          .then((v) => {})
+          .catch((er) => setError(er.message));
         navigate("/");
+        setError("");
       })
-      .catch((er) => console.error(er));
+      .catch((er) => setError(er.message));
     e.target.reset();
   };
   return (
@@ -96,6 +105,11 @@ const Register = () => {
           required
         />
       </div>
+      {error && (
+        <p className="p-1 border border-red-500 text-sm w-fit rounded-md text-red-500">
+          {error}
+        </p>
+      )}
       <p className="text-gray-400 my-3">
         Already have an account ?{" "}
         <Link
@@ -115,7 +129,10 @@ const Register = () => {
       <h3 className="text-xl text-center text-gray-400 mt-3">
         Or Continue With
       </h3>
-      <button className="w-full shadow-lg hover:scale-105 duration-300 border text-lg mt-3 border-blue-500 py-2 flex items-center justify-center  rounded-lg font-bold">
+      <button
+        onClick={googleSignIn}
+        className="w-full shadow-lg hover:scale-105 duration-300 border text-lg mt-3 border-blue-500 py-2 flex items-center justify-center  rounded-lg font-bold"
+      >
         <FaGoogle className="mx-2 text-blue-700"></FaGoogle> Google
       </button>
     </form>

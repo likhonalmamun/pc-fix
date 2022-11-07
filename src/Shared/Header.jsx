@@ -38,7 +38,9 @@ const Header = () => {
             </button>
           </>
         ) : (
-          <Link to="/login">LOGIN</Link>
+          <Link className="pt-2" to="/login">
+            LOGIN
+          </Link>
         )}
       </Navbar.Collapse>
     </Navbar>
