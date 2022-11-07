@@ -1,10 +1,11 @@
 import { updateProfile } from "firebase/auth";
 import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Register = () => {
+  const navigate = useNavigate();
   const { registerWithPass } = useContext(AuthContext);
   const register = (e) => {
     e.preventDefault();
@@ -16,10 +17,11 @@ const Register = () => {
       .then((d) => {
         updateProfile(d.user, { displayName: name, photoURL: photo }).then(
           (v) => {}
-          
-          );
-          console.log(d.user);
-      });
+        );
+        console.log(d.user);
+        navigate("/");
+      })
+      .catch((er) => console.error(er));
     e.target.reset();
   };
   return (

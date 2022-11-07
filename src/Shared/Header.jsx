@@ -14,16 +14,29 @@ const Header = () => {
         </span>
       </Navbar.Brand>
       <Navbar.Toggle />
-      <Navbar.Collapse>
-        <Link to="/">HOME</Link>
-        <Link to="/services">SERVICES</Link>
+      <Navbar.Collapse className="flex items-center">
+        <Link className="pt-2" to="/">
+          HOME
+        </Link>
+        <Link className="pt-2" to="/services">
+          SERVICES
+        </Link>
         {user?.uid ? (
-          <button
-            onClick={() => logOut().then((r) => {})}
-            className="flex text-red-500 font-bold items-center"
-          >
-            LOGOUT <FaSignOutAlt className="mx-2"></FaSignOutAlt>
-          </button>
+          <>
+            <button
+              onClick={() => logOut().then((r) => {})}
+              className="flex text-red-500 font-bold items-center"
+            >
+              <img
+                className="h-8 border-2 mx-2 rounded-full"
+                title={user?.displayName}
+                s
+                src={user?.photoURL}
+                alt=""
+              />{" "}
+              LOGOUT <FaSignOutAlt className="mx-2"></FaSignOutAlt>
+            </button>
+          </>
         ) : (
           <Link to="/login">LOGIN</Link>
         )}

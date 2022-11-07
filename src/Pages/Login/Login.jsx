@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthProvider";
 const Login = () => {
+  const navigate = useNavigate();
+  const { loginWithPass } = useContext(AuthContext);
   const login = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+    loginWithPass(email, password)
+      .then((d) => {
+        navigate("/");
+      })
+      .catch((er) => console.error(er));
+
     e.target.reset();
   };
   return (
