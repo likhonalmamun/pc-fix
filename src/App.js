@@ -1,23 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./Routes/router";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className=" text-7xl text-rose-500"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App max-w-[1050px] mx-auto">
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
