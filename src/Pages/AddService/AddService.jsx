@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 const AddService = () => {
-  const navigate = useNavigate();
   const addService = (e) => {
     e.preventDefault();
     const newService = {
@@ -17,9 +17,9 @@ const AddService = () => {
       body: JSON.stringify(newService),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
+      .then((result) => {})
+      .catch((er) => console.error(er));
     e.target.reset();
-    // navigate("/");
   };
   return (
     <form
