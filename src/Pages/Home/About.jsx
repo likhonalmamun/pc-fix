@@ -12,12 +12,13 @@ const About = () => {
           <span className="text-blue-500">FIX</span>
         </h1>
         <p className="italic font-normal text-yellow-400">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis
-          excepturi modi laboriosam recusandae dolor nulla quod nostrum
-          consectetur voluptatem quasi unde, quis quia? Aut, dolorum. Veniam vel
-          esse obcaecati mollitia provident similique fugiat quo impedit cum et
-          laboriosam modi perferendis eos magnam nulla numquam eligendi, maxime
-          aperiam repellendus! Omnis, dicta.
+          Myself <span className="font-bold">Likhon Al Mamun</span> . Welcome to <span className="font-bold">PCFIX </span>. Here I am providing some
+          essential services related to computer servicing or something like
+          that . Here I do servicing of PC , windows setup , activating , office
+          software selling and so on . I have been working on these services for
+          years . I do provide these services all by myself . Check out my
+          services and feel free to give feedback so that I can improve myself
+          and the services I am providing .
         </p>
       </div>
     </div>
