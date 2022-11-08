@@ -23,6 +23,12 @@ const Header = () => {
         </Link>
         {user?.uid ? (
           <>
+            <Link className="pt-2" to="/myReviews">
+              MY REVIEWS
+            </Link>
+            <Link className="pt-2" to="/addService">
+              ADD SERVICE
+            </Link>
             <button
               onClick={() => logOut().then((r) => {})}
               className="flex text-red-500 font-bold items-center"
@@ -30,7 +36,6 @@ const Header = () => {
               <img
                 className="h-8 border-2 mx-2 rounded-full"
                 title={user?.displayName}
-                s
                 src={user?.photoURL}
                 alt=""
               />{" "}

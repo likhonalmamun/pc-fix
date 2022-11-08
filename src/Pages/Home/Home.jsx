@@ -1,13 +1,17 @@
-import React from 'react';
-import Header from './Header';
+import React from "react";
+import Banner from "./Banner";
+import Overview from "./Overview";
+import About from "./About";
 
 const Home = () => {
-    return (
-        <div>
-            <Header></Header>
-            this is home
-        </div>
-    );
+  return (
+    <div>
+      <Banner></Banner>
+      services
+      <Overview></Overview>
+      <About></About>
+    </div>
+  );
 };
 
 export default Home;
