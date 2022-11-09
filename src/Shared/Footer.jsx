@@ -4,7 +4,7 @@ import logo from "../assets/images/logo.png";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="p-4 bg-white sm:p-6 mt-20 dark:bg-gray-900">
+    <footer className="p-4 border-t-2  bg-white sm:p-6 mt-20 dark:bg-gray-900">
       <div className="md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
           <Link to="/" className="flex items-center">
@@ -14,21 +14,24 @@ const Footer = () => {
             </span>
           </Link>
         </div>
-        <div>
+        <div className="text-right">
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Legal
+            <h2 className="mb-3 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              CONTACT US
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
-              <li className="mb-4">
+              <li className="mb-1">
                 <Link to="/" className="hover:underline">
-                  Privacy Policy
+                  pcfix@gmail.com
                 </Link>
               </li>
               <li>
                 <Link to="/" className="hover:underline">
-                  Terms &amp; Conditions
+                  +88013******48
                 </Link>
+              </li>
+              <li>
+                address : <br /> New Market Road, Kalinagar , Kushtiya
               </li>
             </ul>
           </div>

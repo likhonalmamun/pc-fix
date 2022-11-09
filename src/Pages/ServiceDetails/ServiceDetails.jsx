@@ -11,7 +11,7 @@ const ServiceDetails = () => {
   const { service } = useLoaderData();
   const { serviceName, serviceDescription, serviceImg, _id, serviceCost } =
     service;
-  console.log(reviews);
+  // console.log(reviews);
   useEffect(() => {
     fetch(`http://localhost:5000/reviews/${_id}`)
       .then((res) => res.json())
@@ -36,9 +36,10 @@ const ServiceDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => setLoader(!loader))
-      .catch((er) => console.log(er));
+      .catch((er) => console.error(er));
     e.target.reset();
   };
+
   return (
     <>
       <div className="w-[70%]  mx-auto ">
@@ -108,11 +109,17 @@ const ServiceDetails = () => {
           </div>
         )}
 
-        <div>
-          {reviews.map((review) => (
-            <Review key={review._id} review={review}></Review>
-          ))}
-        </div>
+        {reviews.length === 0 ? (
+          <div className="font-bold p-2 text-center bg-blue-100 text-blue-700">
+            No reviews available on this service !
+          </div>
+        ) : (
+          <div>
+            {reviews.map((review) => (
+              <Review key={review._id} review={review}></Review>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
