@@ -1,8 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 const Login = () => {
+  useEffect(() => {
+    document.title = "PCFIX | LOGIN";
+  }, []);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const location = useLocation();

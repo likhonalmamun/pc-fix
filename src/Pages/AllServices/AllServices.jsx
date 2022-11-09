@@ -4,6 +4,7 @@ import ServiceCard from "../Home/ServiceCard";
 const AllServices = () => {
   const [allServices, setAllServices] = useState([]);
   useEffect(() => {
+    document.title = "PCFIX | SERVICES";
     fetch("http://localhost:5000/allServices")
       .then((res) => res.json())
       .then((data) => setAllServices(data.allServices));

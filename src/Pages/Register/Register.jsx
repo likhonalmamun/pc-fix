@@ -1,10 +1,13 @@
 import { updateProfile } from "firebase/auth";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Register = () => {
+  useEffect(() => {
+    document.title = "PCFIX | REGISTER";
+  }, []);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const { registerWithPass, googleLogin } = useContext(AuthContext);

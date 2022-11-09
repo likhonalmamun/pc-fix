@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const MyReview = ({ review ,setLoader , loader}) => {
-
+const MyReview = ({ review, setLoader, loader }) => {
   const deleteReview = () => {
+   
     fetch(`http://localhost:5000/reviews/${review._id}`, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
@@ -11,7 +11,7 @@ const MyReview = ({ review ,setLoader , loader}) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.result);
-        setLoader(!loader)
+        setLoader(!loader);
       })
       .catch((er) => console.error(er));
   };

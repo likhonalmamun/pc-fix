@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 const AddService = () => {
+  useEffect(() => {
+    document.title = "PCFIX | ADD SERVICE";
+  }, []);
   const addService = (e) => {
     e.preventDefault();
     const newService = {

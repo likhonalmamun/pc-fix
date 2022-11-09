@@ -8,6 +8,7 @@ const MyReviews = () => {
   const [loader, setLoader] = useState(true);
   // console.log(user.email);
   useEffect(() => {
+    document.title = "PCFIX | MY REVIEWS";
     fetch(`http://localhost:5000/reviews?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setReviews(data.reviews))
