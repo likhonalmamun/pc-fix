@@ -17,7 +17,7 @@ const MyReviews = () => {
   // console.log(reviews);
   if (reviews.length > 0) {
     return (
-      <div className="w-[80%] mx-auto">
+      <div className="w-[83%] border bg-gray-50 p-10 mx-auto">
         <h1 className="text-3xl text-blue-500 font-bold text-center">
           Your reviews
         </h1>
@@ -33,8 +33,8 @@ const MyReviews = () => {
     );
   } else {
     return (
-      <div className="text-3xl p-4 bg-blue-100 text-blue-700 font-bold text-center">
-        You didn't add any reviews .
+      <div className="text-3xl p-4 h-[80vh] bg-blue-100 text-blue-700 font-bold text-center">
+        <h1 className="mt-[35vh]">You didn't add any reviews .</h1>
       </div>
     );
   }

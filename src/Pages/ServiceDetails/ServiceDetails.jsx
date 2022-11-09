@@ -28,6 +28,7 @@ const ServiceDetails = () => {
       reviewerImg: user.photoURL,
       text: e.target.review.value,
       reviewerEmail: user.email,
+      time: Date.now(),
     };
     fetch("http://localhost:5000/reviews", {
       method: "POST",

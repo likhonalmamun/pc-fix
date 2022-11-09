@@ -13,6 +13,7 @@ const AddService = () => {
       serviceCost: e.target.cost.value,
       serviceImg: e.target.photo.value,
       serviceDescription: e.target.details.value,
+      time: Date.now(),
     };
     fetch("http://localhost:5000/services", {
       method: "POST",

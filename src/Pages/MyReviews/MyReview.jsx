@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const MyReview = ({ review, setLoader, loader }) => {
   const deleteReview = () => {
-   
     fetch(`http://localhost:5000/reviews/${review._id}`, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
@@ -29,17 +28,17 @@ const MyReview = ({ review, setLoader, loader }) => {
         </p>
       </div>
       <div>
-        <button className="h-1/2 border-t block font-semibold hover:bg-transparent hover:text-blue-600 duration-300 bg-blue-500 w-full shadow-md text-white rounded-tr-lg">
-          Edit
-        </button>
-        <Link>
-          <button
-            onClick={deleteReview}
-            className="h-1/2 block border-b font-semibold hover:bg-transparent hover:text-red-600 duration-300 bg-red-500 w-full shadow-md text-white  rounded-br-xl"
-          >
-            Delete
+        <Link to={`/edit/${review._id}`}>
+          <button className="h-1/2 border-t block font-semibold hover:bg-transparent hover:text-blue-600 duration-300 bg-blue-500 w-full shadow-md text-white rounded-tr-lg">
+            Edit
           </button>
         </Link>
+        <button
+          onClick={deleteReview}
+          className="h-1/2 block border-b font-semibold hover:bg-transparent hover:text-red-600 duration-300 bg-red-500 w-full shadow-md text-white  rounded-br-xl"
+        >
+          Delete
+        </button>
       </div>
     </div>
   );

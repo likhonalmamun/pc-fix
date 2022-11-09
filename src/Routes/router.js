@@ -5,6 +5,7 @@ import AddService from "../Pages/AddService/AddService";
 import AllServices from "../Pages/AllServices/AllServices";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import EditReview from "../Pages/MyReviews/EditReview";
 import MyReviews from "../Pages/MyReviews/MyReviews";
 import Register from "../Pages/Register/Register";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
@@ -24,6 +25,12 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
         element: <ServiceDetails></ServiceDetails>,
+      },
+      {
+        path: "/edit/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/edit/${params.id}`),
+        element: <EditReview></EditReview>,
       },
       {
         path: "/myReviews",

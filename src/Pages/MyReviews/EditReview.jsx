@@ -1,0 +1,57 @@
+import React from "react";
+import { useLoaderData } from "react-router-dom";
+
+const EditReview = () => {
+  const { review } = useLoaderData();
+
+  const updateReview = (e) => {
+    e.preventDefault();
+    const newReview = { newText: e.target.review.value };
+    // console.log(newReview);
+    fetch(`http://localhost:5000/review/${review._id}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(newReview),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data.result))
+      .catch((er) => console.error(er));
+    e.target.reset();
+  };
+  return (
+    <div className="h-[70vh] border p-10 w-[75%] mx-auto">
+      <form onSubmit={updateReview} action="">
+        <h1 className="text-center font-semibold text-2xl text-blue-500">
+          {" "}
+          Service Name : <span className="italic">{review.serviceName}</span>
+        </h1>
+        <div className="mb-6">
+          <label
+            htmlFor="review"
+            className="block m-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          >
+            Edit your review
+          </label>
+          <textarea
+            className="bg-blue-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            name="review"
+            id="review"
+            rows="5"
+            defaultValue={review.text}
+            placeholder="type review here"
+            required
+          ></textarea>
+        </div>
+
+        <button
+          className="w-full shadow-lg hover:scale-105 duration-300 bg-blue-500 py-2 text-white rounded-lg font-bold"
+          type="submit"
+        >
+          Save changes
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default EditReview;
