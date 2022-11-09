@@ -2,21 +2,23 @@ import { Card } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import Review from "./Review";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
+  const [loader, setLoader] = useState(true);
   const [reviews, setReviews] = useState([]);
   const { service } = useLoaderData();
   const { serviceName, serviceDescription, serviceImg, _id, serviceCost } =
     service;
-console.log(reviews)
+  console.log(reviews);
   useEffect(() => {
     fetch(`http://localhost:5000/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data.reviews))
       .catch((er) => console.error(er));
-  }, [_id]);
-  
+  }, [loader]);
+
   const addReview = (e) => {
     e.preventDefault();
     const review = {
@@ -25,6 +27,7 @@ console.log(reviews)
       reviewerName: user.displayName,
       reviewerImg: user.photoURL,
       text: e.target.review.value,
+      reviewerEmail: user.email,
     };
     fetch("http://localhost:5000/reviews", {
       method: "POST",
@@ -32,7 +35,7 @@ console.log(reviews)
       body: JSON.stringify(review),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data.result))
+      .then((data) => setLoader(!loader))
       .catch((er) => console.log(er));
     e.target.reset();
   };
@@ -105,7 +108,11 @@ console.log(reviews)
           </div>
         )}
 
-        <div>we have currently {reviews.length} reviews</div>
+        <div>
+          {reviews.map((review) => (
+            <Review key={review._id} review={review}></Review>
+          ))}
+        </div>
       </div>
     </>
   );
