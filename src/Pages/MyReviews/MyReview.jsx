@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 
 const MyReview = ({ review, setLoader, loader }) => {
   const deleteReview = () => {
-    fetch(`http://localhost:5000/reviews/${review._id}`, {
+    // delete method for removing review
+    fetch(`https://assignment-11-server-two.vercel.app/reviews/${review._id}`, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data.result);
+        // for fetching reviews  again
         setLoader(!loader);
       })
       .catch((er) => console.error(er));

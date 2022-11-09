@@ -13,7 +13,7 @@ const ServiceDetails = () => {
     service;
   // console.log(reviews);
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews/${_id}`)
+    fetch(`https://assignment-11-server-two.vercel.app/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data.reviews))
       .catch((er) => console.error(er));
@@ -21,6 +21,7 @@ const ServiceDetails = () => {
 
   const addReview = (e) => {
     e.preventDefault();
+    // object format for storing in db
     const review = {
       serviceName: serviceName,
       serviceId: _id,
@@ -30,7 +31,8 @@ const ServiceDetails = () => {
       reviewerEmail: user.email,
       time: Date.now(),
     };
-    fetch("http://localhost:5000/reviews", {
+    // post method for adding new review
+    fetch("https://assignment-11-server-two.vercel.app/reviews", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(review),
@@ -61,6 +63,7 @@ const ServiceDetails = () => {
         <h1 className="text-3xl font-semibold text-blue-500 ">
           Customer Reviews
         </h1>
+        {/* first conditional rendering  */}
         {user?.uid ? (
           <form onSubmit={addReview} className="my-6 " action="">
             <div className="flex items-center">
@@ -109,7 +112,7 @@ const ServiceDetails = () => {
             to add reviews !!
           </div>
         )}
-
+        {/* second conditional rendering */}
         {reviews.length === 0 ? (
           <div className="font-bold p-2 text-center bg-blue-100 text-blue-700">
             No reviews available on this service !

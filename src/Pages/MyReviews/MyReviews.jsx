@@ -9,12 +9,11 @@ const MyReviews = () => {
   // console.log(user.email);
   useEffect(() => {
     document.title = "PCFIX | MY REVIEWS";
-    fetch(`http://localhost:5000/reviews?email=${user.email}`)
+    fetch(`https://assignment-11-server-two.vercel.app/reviews?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setReviews(data.reviews))
       .catch((er) => console.error(er));
   }, [loader, user]);
-  // console.log(reviews);
   if (reviews.length > 0) {
     return (
       <div className="w-[83%] border bg-gray-50 p-10 mx-auto">

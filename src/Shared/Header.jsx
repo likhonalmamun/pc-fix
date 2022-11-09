@@ -1,6 +1,6 @@
 import { Navbar } from "flowbite-react";
 import React, { useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { FaSignOutAlt } from "react-icons/fa";
@@ -23,6 +23,7 @@ const Header = () => {
         <Link className="pt-2" to="/services">
           SERVICES
         </Link>
+        {/* conditional return starts  */}
         {user?.uid ? (
           <>
             <Link className="pt-2" to="/myReviews">

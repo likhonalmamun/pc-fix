@@ -69,6 +69,7 @@ const Login = () => {
           required
         />
       </div>
+      {/* displaying error conditionally */}
       {error && (
         <p className="p-1 border border-red-500 text-sm w-fit rounded-md text-red-500">
           {error}

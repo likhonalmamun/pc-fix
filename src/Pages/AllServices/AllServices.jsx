@@ -5,7 +5,8 @@ const AllServices = () => {
   const [allServices, setAllServices] = useState([]);
   useEffect(() => {
     document.title = "PCFIX | SERVICES";
-    fetch("http://localhost:5000/allServices")
+    // get method for all services
+    fetch("https://assignment-11-server-two.vercel.app/allServices")
       .then((res) => res.json())
       .then((data) => setAllServices(data.allServices));
   }, []);

@@ -8,6 +8,7 @@ const ServiceCard = ({ service }) => {
   return (
     <div className="w-full max-w-sm bg-white rounded-lg shadow-xl border border-blue-400 dark:bg-gray-800 dark:border-gray-700">
       <PhotoProvider>
+        {/* this section is for viewing  full screen photo  */}
         <PhotoView src={serviceImg}>
           <img
             className="p-5 w-full rounded-lg h-[260px] rounded-t-lg"

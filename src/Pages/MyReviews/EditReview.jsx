@@ -7,8 +7,8 @@ const EditReview = () => {
   const updateReview = (e) => {
     e.preventDefault();
     const newReview = { newText: e.target.review.value };
-    // console.log(newReview);
-    fetch(`http://localhost:5000/review/${review._id}`, {
+    // patch method for updating review
+    fetch(`https://assignment-11-server-two.vercel.app/review/${review._id}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newReview),

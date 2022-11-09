@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
 
 const AddService = () => {
   useEffect(() => {
+    // this is for web title
     document.title = "PCFIX | ADD SERVICE";
   }, []);
   const addService = (e) => {
@@ -15,7 +14,8 @@ const AddService = () => {
       serviceDescription: e.target.details.value,
       time: Date.now(),
     };
-    fetch("http://localhost:5000/services", {
+    // post method
+    fetch("https://assignment-11-server-two.vercel.app/services", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newService),

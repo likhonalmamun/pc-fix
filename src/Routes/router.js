@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
-
 import AddService from "../Pages/AddService/AddService";
 import AllServices from "../Pages/AllServices/AllServices";
 import Home from "../Pages/Home/Home";
@@ -11,6 +10,7 @@ import Register from "../Pages/Register/Register";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
+// main router defination
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -23,13 +23,17 @@ export const router = createBrowserRouter([
       {
         path: "/services/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://assignment-11-server-two.vercel.app/services/${params.id}`
+          ),
         element: <ServiceDetails></ServiceDetails>,
       },
       {
         path: "/edit/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/edit/${params.id}`),
+          fetch(
+            `https://assignment-11-server-two.vercel.app/edit/${params.id}`
+          ),
         element: <EditReview></EditReview>,
       },
       {
