@@ -59,13 +59,21 @@ const Login = () => {
           .then((res) => res.json())
           .then((d) => {
             localStorage.setItem("PCFIX-token", d.token);
+            setSpiner(false);
+          })
+          .catch((er) => {
+            setSpiner(false);
+            setError(er.message);
           });
         //  token fetching ends
         setSpiner(false);
         navigate(from);
         setError("");
       })
-      .catch((er) => setError(er.message));
+      .catch((er) => {
+        setSpiner(false);
+        setError(er.message);
+      });
 
     e.target.reset();
   };
