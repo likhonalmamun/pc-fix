@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="text-right">
           <div>
             <h2 className="mb-3 text-sm font-semibold text-gray-900 uppercase ">
-              CONTACT US
+              CONTACT me
             </h2>
             <ul className="text-gray-600 d">
               <li className="mb-1">
@@ -37,7 +37,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <hr className="my-6 border-gray-200 sm:mx-auto " />
+      <hr className="my-6 border-gray-400 sm:mx-auto " />
       <div className="sm:flex sm:items-center sm:justify-between">
         <span className="text-sm text-gray-500 sm:text-center ">
           © 2022{" "}

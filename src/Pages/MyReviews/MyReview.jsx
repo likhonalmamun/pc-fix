@@ -1,4 +1,5 @@
 import React from "react";
+import { FaRegEdit, FaTrashAlt } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -32,7 +33,7 @@ const MyReview = ({ review, setLoader, loader }) => {
   return (
     <>
       {" "}
-      <div className=" border bg-blue-100 shadow-md grid grid-cols-[3fr,1fr] gap-4 rounded-xl my-5">
+      <div className=" border bg-blue-100 shadow-md sm:grid grid-cols-[3fr,1fr] gap-4 rounded-xl my-5">
         <div className="my-2.5 ml-3">
           <h1 className="text-lg text-red-500 font-bold">
             Service :{" "}
@@ -48,15 +49,15 @@ const MyReview = ({ review, setLoader, loader }) => {
 
         <div>
           <Link to={`/edit/${review._id}`}>
-            <button className="h-1/2 border-t block font-semibold hover:bg-transparent hover:text-blue-600 duration-300 bg-blue-500 w-full shadow-md text-white rounded-tr-lg">
-              Edit
+            <button className="sm:h-1/2 border-t p-1.5 sm:p-0 block font-semibold hover:bg-transparent hover:text-blue-600 duration-300 bg-blue-500 w-full shadow-md text-white rounded-tr-lg">
+              Edit <FaRegEdit className="h-6 pb-1 font-bold ml-1 inline"></FaRegEdit>
             </button>
           </Link>
           <button
             onClick={deleteReview}
-            className="h-1/2 block border-b font-semibold hover:bg-transparent hover:text-red-600 duration-300 bg-red-500 w-full shadow-md text-white  rounded-br-xl"
+            className="sm:h-1/2 block border-b p-1.5 sm:p-0 font-semibold hover:bg-transparent hover:text-red-600 duration-300 bg-red-500 w-full shadow-md text-white  rounded-br-xl"
           >
-            Delete
+            Delete <FaTrashAlt className="h-5 pb-1 font-bold ml-1 inline"></FaTrashAlt>
           </button>
         </div>
       </div>

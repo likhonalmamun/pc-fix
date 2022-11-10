@@ -25,7 +25,7 @@ const MyReviews = () => {
   if (reviews?.length > 0) {
     return (
       // main content
-      <div className="w-[83%] border bg-gray-50 p-10 mx-auto">
+      <div className="md:max-w-[83%] w-[97%] border bg-gray-50 sm:p-10 p-3 mx-auto">
         <h1 className="text-3xl text-blue-500 font-bold text-center">
           Your reviews
         </h1>
@@ -42,8 +42,8 @@ const MyReviews = () => {
   } else {
     return (
       // message for empty content
-      <div className="text-3xl p-4 h-[80vh] bg-blue-100 text-blue-700 font-bold text-center">
-        <h1 className="mt-[35vh]">You didn't add any reviews .</h1>
+      <div className="text-3xl mx-5 my-[35vh] p-6  bg-blue-100 text-blue-700 font-bold text-center">
+        <h1 >You didn't add any reviews yet.</h1>
       </div>
     );
   }

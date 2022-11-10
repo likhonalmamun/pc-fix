@@ -45,20 +45,20 @@ const ServiceDetails = () => {
 
   return (
     <>
-      <div className="w-[70%]  mx-auto ">
+      <div className="sm:w-[70%] w-[95%] mx-auto ">
         <Card className="h-full" imgSrc={serviceImg}>
-          <h5 className="text-2xl font-bold tracking-tight text-blue-500 ">
+          <h5 className="text-2xl font-semibold sm:font-bold tracking-tight text-blue-500 ">
             {serviceName}
           </h5>
-          <p className="font-normal text-gray-600 ">{serviceDescription}</p>
-          <h5 className="text-2xl font-bold tracking-tight text-gray-500 ">
+          <p className="font-normal text-sm sm:text-md text-gray-600 ">{serviceDescription}</p>
+          <h5 className="sm:text-2xl text-xl font-bold tracking-tight text-gray-500 ">
             Only For {serviceCost} BDT
           </h5>
         </Card>
       </div>
 
-      <div className="w-[70%]  mx-auto my-20">
-        <h1 className="text-3xl font-semibold text-blue-500 ">
+      <div className="sm:w-[70%] w-[95%]  mx-auto my-20">
+        <h1 className="sm:text-3xl text-2xl font-semibold text-blue-500 ">
           Customer Reviews
         </h1>
         {/* first conditional rendering  */}
@@ -84,15 +84,15 @@ const ServiceDetails = () => {
                 type="text"
                 id="review"
                 name="review"
-                className="bg-gray-50 border focus:scale-105 duration-300 shadow-md
-               border-gray-300 text-gray-900 text-sm rounded-tl-xl rounded-bl-xl
+                className="bg-gray-50 border text-sm sm:text-base focus:scale-105 duration-300 shadow-md
+               border-gray-300 text-gray-900 rounded-tl-xl rounded-bl-xl
                  focus:border-blue-500 block w-full p-2.5"
                 placeholder="write a review on this service"
                 required
               />
               <button
                 className="w-full h-fit shadow-lg hover:scale-105 duration-300
-               bg-blue-500 py-2.5 text-white rounded-tr-xl rounded-br-xl font-bold"
+               bg-blue-500 py-[11px] sm:text-base text-sm text-white rounded-tr-xl rounded-br-xl sm:font-bold"
                 type="submit"
               >
                 Post Review

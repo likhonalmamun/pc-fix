@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { toast } from "react-toastify";
-
+import { FaPlus } from "react-icons/fa";
 const AddService = () => {
   useEffect(() => {
     // this is for web title
@@ -42,10 +42,10 @@ const AddService = () => {
     <form
       onSubmit={addService}
       action=""
-      className="p-10 pb-14 border-2 shadow-2xl border-blue-300 rounded-xl max-w-[700px] mx-auto"
+      className="sm:p-10 p-3 pb-14 border-2 shadow-2xl border-blue-300 rounded-xl w-[95%] sm:max-w-[700px] mx-auto"
     >
-      <h1 className="text-3xl text-blue-500 font-bold mb-5">
-        Add new service !
+      <h1 className="text-3xl text-blue-500 font-semibold sm:font-bold mb-5">
+        Add new service!
       </h1>
 
       <div className="mb-6">
@@ -122,7 +122,7 @@ const AddService = () => {
         className="w-full shadow-lg hover:scale-105 duration-300 bg-blue-500 py-2 text-white rounded-lg font-bold"
         type="submit"
       >
-        Add Service
+        Add Service <FaPlus className="h-3 text-white inline"></FaPlus>
       </button>
     </form>
   );

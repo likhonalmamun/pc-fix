@@ -16,12 +16,12 @@ const Header = () => {
         </span>
       </Navbar.Brand>
       <Navbar.Toggle />
-      <Navbar.Collapse className="flex items-center">
+      <Navbar.Collapse className="flex  items-center">
         <Link className="pt-2 hover:scale-105 hover:text-blue-600" to="/">
           HOME
         </Link>
         <Link
-          className="pt-2 hover:scale-105 hover:text-blue-600"
+          className="pt-2 hidden lg:block hover:scale-105 hover:text-blue-600"
           to="/services"
         >
           SERVICES
@@ -45,14 +45,14 @@ const Header = () => {
               className="pt-2 hover:scale-105 hover:text-blue-600"
               to="/blogs"
             >
-             BLOGS
+              BLOGS
             </Link>
             <button
               onClick={() => logOut().then((r) => {})}
-              className="flex  text-red-500 font-bold items-center"
+              className="flex  text-red-500 mt-3 sm:mt-0  font-bold items-center"
             >
               <img
-                className="h-8 border-2 hover:scale-110 mx-2 rounded-full"
+                className="h-8 border-2  hover:scale-110 mx-2 rounded-full"
                 title={user?.displayName}
                 src={user?.photoURL}
                 alt=""

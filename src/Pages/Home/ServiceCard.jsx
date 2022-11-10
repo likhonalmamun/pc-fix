@@ -6,18 +6,18 @@ const ServiceCard = ({ service }) => {
   const { _id, serviceName, serviceDescription, serviceImg, serviceCost } =
     service;
   return (
-    <div className="w-full max-w-sm bg-white rounded-lg shadow-xl border border-blue-400">
+    <div className="w-full  bg-white rounded-lg shadow-xl border border-blue-400">
       <PhotoProvider>
         {/* this section is for viewing  full screen photo  */}
         <PhotoView src={serviceImg}>
           <img
-            className="p-5 w-full rounded-lg h-[260px] rounded-t-lg"
+            className="sm:p-5 p-2 w-full rounded-lg h-[260px] rounded-t-lg"
             src={serviceImg}
             alt=""
           />
         </PhotoView>
       </PhotoProvider>
-      <div className="px-5 pb-5">
+      <div className="sm:px-5 px-2 pb-5">
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 ">
           {serviceName}
         </h5>

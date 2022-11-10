@@ -21,11 +21,11 @@ const EditReview = () => {
     e.target.reset();
   };
   return (
-    <div className="h-[60vh] border  p-10 w-[75%] mx-auto">
+    <div className="h-[60vh] border p-3 sm:p-10 sm:w-[75%] w-[95%] mx-auto">
       <form className="mt-20" onSubmit={updateReview} action="">
-        <h1 className="text-center font-semibold text-2xl text-blue-500">
+        <h1 className="text-center font-bold text-xl sm:text-2xl text-blue-500">
           {" "}
-          Service Name : <span className="italic">{review.serviceName}</span>
+          Service : <span className="italic">{review.serviceName}</span>
         </h1>
         <div className="mb-6">
           <label

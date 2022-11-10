@@ -89,7 +89,7 @@ const Login = () => {
       <form
         onSubmit={login}
         action=""
-        className="p-10 pb-14 border-2 shadow-2xl border-blue-300 rounded-xl max-w-[450px] mx-auto"
+        className="sm:p-10 p-3 pb-14 border-2 shadow-2xl border-blue-300 rounded-xl w-[95%] sm:max-w-[450px] mx-auto"
       >
         <h1 className="text-3xl text-blue-500 font-bold mb-5"> Login !</h1>
         <div className="mb-6">

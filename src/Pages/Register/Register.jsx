@@ -90,7 +90,7 @@ const Register = () => {
       <form
         onSubmit={register}
         action=""
-        className="p-10 pb-14 border-2 shadow-2xl border-blue-300 rounded-xl max-w-[500px] mx-auto"
+        className="sm:p-10 p-3 pb-14 border-2 shadow-2xl border-blue-300 rounded-xl w-[95%] sm:max-w-[500px] mx-auto"
       >
         <h1 className="text-3xl text-blue-500 font-bold mb-5"> Register !</h1>
 
