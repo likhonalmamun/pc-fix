@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const EditReview = () => {
   const { review } = useLoaderData();
-
+  useEffect(() => {
+    document.title = "PCFIX | MY REVIEWS-Edit";
+  }, []);
   const updateReview = (e) => {
     e.preventDefault();
     const newReview = { newText: e.target.review.value };
@@ -19,8 +21,8 @@ const EditReview = () => {
     e.target.reset();
   };
   return (
-    <div className="h-[70vh] border p-10 w-[75%] mx-auto">
-      <form onSubmit={updateReview} action="">
+    <div className="h-[60vh] border  p-10 w-[75%] mx-auto">
+      <form className="mt-20" onSubmit={updateReview} action="">
         <h1 className="text-center font-semibold text-2xl text-blue-500">
           {" "}
           Service Name : <span className="italic">{review.serviceName}</span>

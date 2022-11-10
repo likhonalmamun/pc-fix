@@ -1,3 +1,4 @@
+// import { contains } from "@firebase/util";
 import React, { useContext, useEffect, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -14,8 +15,21 @@ const Login = () => {
   const googleSignIn = () => {
     googleLogin()
       .then((d) => {
-        navigate(from);
-        setError("");
+        const jwtPayload = { email: d.user.email };
+        // console.log(jwtPayload);
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(jwtPayload),
+        })
+          .then((res) => res.json())
+          .then((d) => {
+            console.log(d.token)
+            localStorage.setItem("PCFIX-token", d.token);
+            navigate(from);
+            setError("");
+          })
+          .catch((er) => console.error(er));
       })
       .catch((er) => setError(er.message));
   };
@@ -23,10 +37,20 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const jwtPayload = { email: email };
     loginWithPass(email, password)
-      .then((d) => {
-        navigate(from);
-        setError("");
+      .then((r) => {
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(jwtPayload),
+        })
+          .then((res) => res.json())
+          .then((d) => {
+            navigate(from);
+            setError("");
+            localStorage.setItem("PCFIX-token", d.token);
+          });
       })
       .catch((er) => setError(er.message));
 

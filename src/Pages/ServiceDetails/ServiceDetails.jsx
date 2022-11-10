@@ -81,7 +81,8 @@ const ServiceDetails = () => {
               </label>
             </div>
             <div className="grid mb-10 grid-cols-[2.5fr,1fr]">
-              <input
+              <textarea
+                rows={1}
                 type="text"
                 id="review"
                 name="review"

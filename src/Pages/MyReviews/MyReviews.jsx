@@ -5,16 +5,21 @@ import MyReview from "./MyReview";
 const MyReviews = () => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
+
   const [loader, setLoader] = useState(true);
   // console.log(user.email);
   useEffect(() => {
     document.title = "PCFIX | MY REVIEWS";
-    fetch(`https://assignment-11-server-two.vercel.app/reviews?email=${user.email}`)
+    fetch(`http://localhost:5000/reviews?email=${user.email}`, {
+      headers: {
+        authentication: `Bearer ${localStorage.getItem("PCFIX-token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setReviews(data.reviews))
       .catch((er) => console.error(er));
   }, [loader, user]);
-  if (reviews.length > 0) {
+  if (reviews?.length > 0) {
     return (
       <div className="w-[83%] border bg-gray-50 p-10 mx-auto">
         <h1 className="text-3xl text-blue-500 font-bold text-center">

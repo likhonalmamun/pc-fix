@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const MyReview = ({ review, setLoader, loader }) => {
+  // toast.configure();
   const deleteReview = () => {
     // delete method for removing review
     fetch(`https://assignment-11-server-two.vercel.app/reviews/${review._id}`, {
@@ -12,6 +15,7 @@ const MyReview = ({ review, setLoader, loader }) => {
       .then((data) => {
         console.log(data.result);
         // for fetching reviews  again
+        // toast("Hello Geeks 2", { position: toast.POSITION.TOP_CENTER });
         setLoader(!loader);
       })
       .catch((er) => console.error(er));
