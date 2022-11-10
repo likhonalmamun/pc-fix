@@ -23,7 +23,7 @@ const Login = () => {
       .then((d) => {
         const jwtPayload = { email: d.user.email };
         // getting the jwt token and storing in LS
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://assignment-11-server-two.vercel.app/jwt", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(jwtPayload),
@@ -51,7 +51,7 @@ const Login = () => {
     loginWithPass(email, password)
       .then((r) => {
         // getting the jwt token and storing in LS
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://assignment-11-server-two.vercel.app/jwt", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(jwtPayload),

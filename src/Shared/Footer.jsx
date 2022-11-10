@@ -4,12 +4,12 @@ import logo from "../assets/images/logo.png";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="p-4 border-t-2  bg-white sm:p-6 mt-20 ">
+    <footer className="p-4 border-t-2  bg-gray-100 sm:p-6 mt-20 ">
       <div className="md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
           <Link to="/" className="flex items-center">
             <img src={logo} className="mr-3 h-12" alt="PCFIX" />
-            <span className="self-center text-3xl font-semibold whitespace-nowrap text-gray-500 ">
+            <span className="self-center text-3xl font-bold whitespace-nowrap text-gray-500 ">
               PC<span className="text-blue-600 ">FIX</span>
             </span>
           </Link>
