@@ -58,6 +58,10 @@ const Register = () => {
           .then((res) => res.json())
           .then((d) => {
             localStorage.setItem("PCFIX-token", d.token);
+          })
+          .catch((er) => {
+            setSpiner(false);
+            setError(er.message);
           });
         //  setting username and image
         updateProfile(d.user, { displayName: name, photoURL: photo })
@@ -68,7 +72,10 @@ const Register = () => {
         navigate("/");
         setError("");
       })
-      .catch((er) => setError(er.message));
+      .catch((er) => {
+        setSpiner(false);
+        setError(er.message);
+      });
     e.target.reset();
   };
   if (spinner) {
