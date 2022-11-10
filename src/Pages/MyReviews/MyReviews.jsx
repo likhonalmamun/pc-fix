@@ -10,11 +10,14 @@ const MyReviews = () => {
   // console.log(user.email);
   useEffect(() => {
     document.title = "PCFIX | MY REVIEWS";
-    fetch(`http://localhost:5000/reviews?email=${user.email}`, {
-      headers: {
-        authentication: `Bearer ${localStorage.getItem("PCFIX-token")}`,
-      },
-    })
+    fetch(
+      `https://assignment-11-server-two.vercel.app/reviews?email=${user.email}`,
+      {
+        headers: {
+          authentication: `Bearer ${localStorage.getItem("PCFIX-token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => setReviews(data.reviews))
       .catch((er) => console.error(er));

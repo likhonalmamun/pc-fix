@@ -1,8 +1,7 @@
-import { Toast } from "flowbite-react";
-import React, { useEffect, useState } from "react";
-import { HiCheck, HiExclamation, HiFire, HiX } from "react-icons/hi";
+import React, { useEffect } from "react";
+import { toast } from "react-toastify";
+
 const AddService = () => {
-  const [toast, setToast] = useState(false);
   useEffect(() => {
     // this is for web title
     document.title = "PCFIX | ADD SERVICE";
@@ -24,10 +23,16 @@ const AddService = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        setToast(true);
-        setTimeout(() => {
-          setToast(false);
-        }, 3000);
+        toast.success("New service added successfully!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       })
       .catch((er) => console.error(er));
     e.target.reset();
@@ -38,18 +43,6 @@ const AddService = () => {
       action=""
       className="p-10 pb-14 border-2 shadow-2xl border-blue-300 rounded-xl max-w-[700px] mx-auto"
     >
-      {toast && (
-        <Toast className="max-w-[600px] fixed top-20 left-[35%] duration-500 text-xl font-bold h-20 bg-green-200">
-          <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100  text-green-500 dark:bg-green-800 dark:text-green-200">
-            <HiCheck className="h-20 w-full" />
-          </div>
-          <div className="ml-3 text-xl font-bold">
-            New service added successfully !
-          </div>
-          <Toast.Toggle />
-        </Toast>
-      )}
-
       <h1 className="text-3xl text-blue-500 font-bold mb-5">
         Add new service !
       </h1>
