@@ -30,12 +30,14 @@ const EditReview = () => {
         <div className="mb-6">
           <label
             htmlFor="review"
-            className="block m-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            className="block m-2 text-sm font-medium text-gray-900 "
           >
             Edit your review
           </label>
           <textarea
-            className="bg-blue-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-blue-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900
+             text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+              "
             name="review"
             id="review"
             rows="5"
@@ -46,7 +48,8 @@ const EditReview = () => {
         </div>
 
         <button
-          className="w-full shadow-lg hover:scale-105 duration-300 bg-blue-500 py-2 text-white rounded-lg font-bold"
+          className="w-full shadow-lg hover:scale-105 duration-300 bg-blue-500 py-2 text-white rounded-lg 
+          font-bold"
           type="submit"
         >
           Save changes

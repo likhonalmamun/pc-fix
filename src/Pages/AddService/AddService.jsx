@@ -23,6 +23,7 @@ const AddService = () => {
     })
       .then((res) => res.json())
       .then((result) => {
+        // success toast
         toast.success("New service added successfully!", {
           position: "top-center",
           autoClose: 5000,
@@ -50,7 +51,7 @@ const AddService = () => {
       <div className="mb-6">
         <label
           htmlFor="name"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          className="block mb-2 text-sm font-medium text-gray-900 "
         >
           Service Name
         </label>
@@ -58,7 +59,7 @@ const AddService = () => {
           type="text"
           id="name"
           name="name"
-          className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
           placeholder="new service name"
           required
         />
@@ -66,7 +67,7 @@ const AddService = () => {
       <div className="mb-6">
         <label
           htmlFor="cost"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          className="block mb-2 text-sm font-medium text-gray-900 "
         >
           Service Cost
         </label>
@@ -74,7 +75,9 @@ const AddService = () => {
           type="text"
           id="cost"
           name="cost"
-          className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 
+          text-gray-90
+           text-sm rounded-lg  focus:border-blue-500 block w-full p-2.5 "
           placeholder="3000TK"
           required
         />
@@ -82,7 +85,7 @@ const AddService = () => {
       <div className="mb-6">
         <label
           htmlFor="photo"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          className="block mb-2 text-sm font-medium text-gray-900 "
         >
           Service Image
         </label>
@@ -90,7 +93,8 @@ const AddService = () => {
           type="text"
           id="photo"
           name="photo"
-          className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300
+           text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
           placeholder="photo URL for new service"
           required
         />
@@ -98,12 +102,14 @@ const AddService = () => {
       <div className="mb-6">
         <label
           htmlFor="details"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          className="block mb-2 text-sm font-medium text-gray-900 "
         >
           Service Description
         </label>
         <textarea
-          className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300
+           text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block
+            w-full p-2.5 "
           name="details"
           id="details"
           rows="10"

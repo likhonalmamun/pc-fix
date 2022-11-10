@@ -11,8 +11,8 @@ const ServiceDetails = () => {
   const { service } = useLoaderData();
   const { serviceName, serviceDescription, serviceImg, _id, serviceCost } =
     service;
-  // console.log(reviews);
   useEffect(() => {
+    // loading service details
     fetch(`https://assignment-11-server-two.vercel.app/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data.reviews))
@@ -50,9 +50,7 @@ const ServiceDetails = () => {
           <h5 className="text-2xl font-bold tracking-tight text-blue-500 ">
             {serviceName}
           </h5>
-          <p className="font-normal text-gray-600 dark:text-gray-400">
-            {serviceDescription}
-          </p>
+          <p className="font-normal text-gray-600 ">{serviceDescription}</p>
           <h5 className="text-2xl font-bold tracking-tight text-gray-500 ">
             Only For {serviceCost} BDT
           </h5>

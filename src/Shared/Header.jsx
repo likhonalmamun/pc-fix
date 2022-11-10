@@ -11,7 +11,7 @@ const Header = () => {
     <Navbar className="mb-10 pt-5" fluid={true} rounded={true}>
       <Navbar.Brand href="/">
         <img src={logo} className="mr-3 h-6 sm:h-9" alt="PCFIX" />
-        <span className="self-center whitespace-nowrap text-gray-600 text-2xl font-semibold dark:text-white">
+        <span className="self-center whitespace-nowrap text-gray-600 text-2xl font-semibold ">
           PC<span className="text-blue-600 ">FIX</span>
         </span>
       </Navbar.Brand>

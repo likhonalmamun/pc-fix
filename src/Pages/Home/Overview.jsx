@@ -17,7 +17,9 @@ const Overview = () => {
         </div>
         <div className="rounded-xl shadow-xl bg-white p-4">
           <h1 className="text-5xl font-bold pl-3">92%</h1>
-          <h3 className="text-xl font-semibold pl-2 text-blue-500">Success Rate</h3>
+          <h3 className="text-xl font-semibold pl-2 text-blue-500">
+            Success Rate
+          </h3>
         </div>
       </div>
     </div>

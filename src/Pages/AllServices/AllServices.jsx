@@ -17,12 +17,20 @@ const AllServices = () => {
   }, []);
   if (servicesLoading) {
     return (
+      // spinner for data loading delay
       <div className="text-3xl p-4 h-[70vh] bg-blue-50 text-blue-700 font-bold text-center">
-        <h1 className="mt-[28vh]"><Spinner size='xl' color="failure" aria-label="Center-aligned spinner example" /></h1>
+        <h1 className="mt-[28vh]">
+          <Spinner
+            size="xl"
+            color="failure"
+            aria-label="Center-aligned spinner example"
+          />
+        </h1>
       </div>
     );
   } else {
     return (
+      // main content
       <div className="mb-20">
         <h1 className="text-4xl font-bold my-11 pl-4 text-blue-500">
           All Services

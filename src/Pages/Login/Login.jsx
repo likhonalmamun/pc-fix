@@ -1,4 +1,3 @@
-// import { contains } from "@firebase/util";
 import { Spinner } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
@@ -6,20 +5,24 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 const Login = () => {
   const [spinner, setSpiner] = useState(false);
+  // title change
   useEffect(() => {
     document.title = "PCFIX | LOGIN";
   }, []);
+
+  // dependency values
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const { loginWithPass, googleLogin } = useContext(AuthContext);
+  // ********** google sign in function ***************
   const googleSignIn = () => {
     setSpiner(true);
     googleLogin()
       .then((d) => {
         const jwtPayload = { email: d.user.email };
-        // console.log(jwtPayload);
+        // getting the jwt token and storing in LS
         fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: { "content-type": "application/json" },
@@ -31,12 +34,14 @@ const Login = () => {
             localStorage.setItem("PCFIX-token", d.token);
           })
           .catch((er) => console.error(er));
+        // token fetching ends
         navigate(from);
         setError("");
         setSpiner(false);
       })
       .catch((er) => setError(er.message));
   };
+  // ************* email password sign in function *************
   const login = (e) => {
     setSpiner(true);
     e.preventDefault();
@@ -45,6 +50,7 @@ const Login = () => {
     const jwtPayload = { email: email };
     loginWithPass(email, password)
       .then((r) => {
+        // getting the jwt token and storing in LS
         fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: { "content-type": "application/json" },
@@ -54,7 +60,7 @@ const Login = () => {
           .then((d) => {
             localStorage.setItem("PCFIX-token", d.token);
           });
-
+        //  token fetching ends
         setSpiner(false);
         navigate(from);
         setError("");
@@ -63,8 +69,10 @@ const Login = () => {
 
     e.target.reset();
   };
+
   if (spinner) {
     return (
+      // spinner for signing in delay
       <div className="text-3xl p-4 h-[70vh] bg-blue-50 text-blue-700 font-bold text-center">
         <h1 className="mt-[28vh]">
           <Spinner
@@ -77,6 +85,7 @@ const Login = () => {
     );
   } else {
     return (
+      // login form starts
       <form
         onSubmit={login}
         action=""
@@ -86,14 +95,16 @@ const Login = () => {
         <div className="mb-6">
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            className="block mb-2 text-sm font-medium text-gray-900 "
           >
             Your email
           </label>
           <input
             type="email"
             name="email"
-            className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 
+            text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+             "
             placeholder="name@example.com"
             required
           />
@@ -101,14 +112,16 @@ const Login = () => {
         <div className="mb-6">
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            className="block mb-2 text-sm font-medium text-gray-900 "
           >
             Your Password
           </label>
           <input
             type="password"
             name="password"
-            className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300
+             text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block
+              w-full p-2.5 "
             placeholder="password (at least 6 chars)"
             required
           />
@@ -130,7 +143,8 @@ const Login = () => {
           now .
         </p>
         <button
-          className="w-full shadow-lg hover:scale-105 duration-300 bg-blue-500 py-2 text-white rounded-lg font-bold"
+          className="w-full shadow-lg hover:scale-105 duration-300 bg-blue-500 py-2 text-white rounded-lg
+           font-bold"
           type="submit"
         >
           Login
@@ -140,7 +154,8 @@ const Login = () => {
         </h3>
         <button
           onClick={googleSignIn}
-          className="w-full shadow-lg hover:scale-105 duration-300 border text-lg mt-3 border-blue-500 py-2 flex items-center justify-center  rounded-lg font-bold"
+          className="w-full shadow-lg hover:scale-105 duration-300 border text-lg mt-3 border-blue-500 py-2 flex 
+          items-center justify-center  rounded-lg font-bold"
         >
           <FaGoogle className="mx-2 text-blue-700"></FaGoogle> Google
         </button>

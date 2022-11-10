@@ -6,7 +6,7 @@ const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
     document.title = "PCFIX | HOME";
-    // get method for limited services 
+    // get method for limited services
     fetch("https://assignment-11-server-two.vercel.app/services")
       .then((res) => res.json())
       .then((data) => setServices(data.services));

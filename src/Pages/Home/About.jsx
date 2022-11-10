@@ -12,7 +12,8 @@ const About = () => {
           <span className="text-blue-500">FIX</span>
         </h1>
         <p className="italic font-normal text-yellow-400">
-          Myself <span className="font-bold">Likhon Al Mamun</span> . Welcome to <span className="font-bold">PCFIX </span>. Here I am providing some
+          Myself <span className="font-bold">Likhon Al Mamun</span> . Welcome to{" "}
+          <span className="font-bold">PCFIX </span>. Here I am providing some
           essential services related to computer servicing or something like
           that . Here I do servicing of PC , windows setup , activating , office
           software selling and so on . I have been working on these services for

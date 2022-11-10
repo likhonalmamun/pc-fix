@@ -8,16 +8,19 @@ import { AuthContext } from "../../Contexts/AuthProvider";
 const Register = () => {
   const [spinner, setSpiner] = useState(false);
   useEffect(() => {
+    // changing title
     document.title = "PCFIX | REGISTER";
   }, []);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const { registerWithPass, googleLogin } = useContext(AuthContext);
+  //********** */ google sign in  function ***********
   const googleSignIn = () => {
     setSpiner(true);
     googleLogin()
       .then((d) => {
         const jwtPayload = { email: d.user.email };
+        // getting the jwt token and storing in LS
         fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: { "content-type": "application/json" },
@@ -27,16 +30,18 @@ const Register = () => {
           .then((d) => {
             localStorage.setItem("PCFIX-token", d.token);
           });
-
+        //  token fetching ends
         setSpiner(false);
         setError("");
         navigate("/");
       })
       .catch((er) => setError(er.message));
   };
+  //********** */ email password sign up function ***********
   const register = (e) => {
     setSpiner(true);
     e.preventDefault();
+    // value collection
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
@@ -44,6 +49,7 @@ const Register = () => {
     const jwtPayload = { email: email };
     registerWithPass(email, password)
       .then((d) => {
+        // getting the jwt token and storing in LS
         fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: { "content-type": "application/json" },
@@ -53,10 +59,11 @@ const Register = () => {
           .then((d) => {
             localStorage.setItem("PCFIX-token", d.token);
           });
-
+        //  setting username and image
         updateProfile(d.user, { displayName: name, photoURL: photo })
           .then((v) => {})
           .catch((er) => setError(er.message));
+        // sign up process ends
         setSpiner(false);
         navigate("/");
         setError("");
@@ -66,6 +73,7 @@ const Register = () => {
   };
   if (spinner) {
     return (
+      // spinner for sign up delay
       <div className="text-3xl p-4 h-[70vh] bg-blue-50 text-blue-700 font-bold text-center">
         <h1 className="mt-[28vh]">
           <Spinner
@@ -78,6 +86,7 @@ const Register = () => {
     );
   } else {
     return (
+      // sign up form
       <form
         onSubmit={register}
         action=""
@@ -88,7 +97,7 @@ const Register = () => {
         <div className="mb-6">
           <label
             htmlFor="name"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            className="block mb-2 text-sm font-medium text-gray-900 "
           >
             Your Name
           </label>
@@ -96,7 +105,9 @@ const Register = () => {
             type="text"
             id="name"
             name="name"
-            className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 
+            text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+             "
             placeholder="your full name"
             required
           />
@@ -104,7 +115,7 @@ const Register = () => {
         <div className="mb-6">
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            className="block mb-2 text-sm font-medium text-gray-900 "
           >
             Your email
           </label>
@@ -112,7 +123,9 @@ const Register = () => {
             type="email"
             id="email"
             name="email"
-            className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 
+            text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+             "
             placeholder="name@example.com"
             required
           />
@@ -120,7 +133,7 @@ const Register = () => {
         <div className="mb-6">
           <label
             htmlFor="password"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            className="block mb-2 text-sm font-medium text-gray-900 "
           >
             Your Password
           </label>
@@ -128,7 +141,9 @@ const Register = () => {
             type="password"
             id="password"
             name="password"
-            className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 
+            text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+             "
             placeholder="password (at least 6 chars)"
             required
           />
@@ -136,7 +151,7 @@ const Register = () => {
         <div className="mb-6">
           <label
             htmlFor="photo"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            className="block mb-2 text-sm font-medium text-gray-900"
           >
             Your Photo URL
           </label>
@@ -144,7 +159,9 @@ const Register = () => {
             type="text"
             id="photo"
             name="photo"
-            className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border focus:scale-105 duration-300 shadow-md border-gray-300 text-gray-900 
+            text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+             "
             placeholder="valid photo URL"
             required
           />
@@ -175,7 +192,8 @@ const Register = () => {
         </h3>
         <button
           onClick={googleSignIn}
-          className="w-full shadow-lg hover:scale-105 duration-300 border text-lg mt-3 border-blue-500 py-2 flex items-center justify-center  rounded-lg font-bold"
+          className="w-full shadow-lg hover:scale-105 duration-300 border text-lg mt-3 border-blue-500 py-2 flex
+           items-center justify-center  rounded-lg font-bold"
         >
           <FaGoogle className="mx-2 text-blue-700"></FaGoogle> Google
         </button>

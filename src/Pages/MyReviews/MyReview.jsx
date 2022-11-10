@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const MyReview = ({ review, setLoader, loader }) => {
   // toast.configure();
@@ -14,7 +14,8 @@ const MyReview = ({ review, setLoader, loader }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.result);
-        toast.info('Review was deleted successfully!', {
+        // delete messege toast
+        toast.info("Review was deleted successfully!", {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -23,7 +24,7 @@ const MyReview = ({ review, setLoader, loader }) => {
           draggable: true,
           progress: undefined,
           theme: "light",
-          });
+        });
         setLoader(!loader);
       })
       .catch((er) => console.error(er));
@@ -59,7 +60,6 @@ const MyReview = ({ review, setLoader, loader }) => {
           </button>
         </div>
       </div>
-      
     </>
   );
 };
